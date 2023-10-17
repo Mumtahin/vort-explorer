@@ -3,7 +3,7 @@ import rampReducer from './reducers/rampReducer'
 
 export const store = configureStore({
   reducer: {
-    ramps: rampReducer
+    rampData: rampReducer
   }
 })
 
