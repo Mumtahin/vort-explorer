@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import rampReducer from './features/rampSlice'
+import rampReducer from './reducers/rampReducer'
 
 export const store = configureStore({
   reducer: {
