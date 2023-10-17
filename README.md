@@ -1,5 +1,13 @@
 # Vort Explorer
-A ReactJS web app which utilises Mapbox to provide an interactive map of boat ramp locations. 
+A ReactJS web app which utilises Mapbox to provide an interactive map of boat ramp locations.
+
+## Technologies
+- ReactJS v18
+- Bootstrapped by create-react-app
+- TypeScript
+- Redux and Redux Toolkit
+- Material UI
+- Mapbox GL
 
 ## Getting started
 

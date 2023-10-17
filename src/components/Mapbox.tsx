@@ -1,9 +1,14 @@
 
 import Map from 'react-map-gl';
+import { useAppSelector } from '../hooks';
 
 const mapboxToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 export const Mapbox = () => {
+
+  const ramp = useAppSelector(state => state.ramps);
+
+  console.log('r', ramp);
 
   return (
     <Map
@@ -19,6 +24,6 @@ export const Mapbox = () => {
       attributionControl={false}
     />
   );
-
 }
-export default (Mapbox);
+
+export default Mapbox;
