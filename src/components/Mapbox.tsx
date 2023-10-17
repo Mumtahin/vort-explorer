@@ -1,14 +1,14 @@
+import Map, { MapGeoJSONFeature, Source } from 'react-map-gl'
+import { useAppSelector } from '../hooks'
+import 'mapbox-gl/dist/mapbox-gl.css'
+import { MapLayer } from './MapLayer'
 
-import Map from 'react-map-gl';
-import { useAppSelector } from '../hooks';
-
-const mapboxToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
+const mapboxToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
 export const Mapbox = () => {
-
-  const ramp = useAppSelector(state => state.ramps);
-
-  console.log('r', ramp);
+  const ramp = useAppSelector(
+    state => state.rampData
+  ) as unknown as MapGeoJSONFeature
 
   return (
     <Map
@@ -19,11 +19,17 @@ export const Mapbox = () => {
         bearing: 0,
         pitch: 0
       }}
-      mapStyle="mapbox://styles/mapbox/dark-v10"
+      mapStyle='mapbox://styles/mapbox/dark-v10'
       mapboxAccessToken={mapboxToken}
       attributionControl={false}
-    />
-  );
+      minZoom={11}
+    >
+      <Source type='geojson' data={ramp}>
+        <MapLayer type={'fill'} source={'mapSource'} />
+        <MapLayer type={'circle'} source={'mapSource'} />
+      </Source>
+    </Map>
+  )
 }
 
-export default Mapbox;
+export default Mapbox
