@@ -1,14 +1,14 @@
 import Map, { MapGeoJSONFeature, Source } from 'react-map-gl'
-import { useAppSelector } from '../hooks'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { MapLayer } from './MapLayer'
 
 const mapboxToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
 
-export const Mapbox = () => {
-  const ramp = useAppSelector(
-    state => state.rampData
-  ) as unknown as MapGeoJSONFeature
+interface Props {
+  data: MapGeoJSONFeature;
+}
+
+export const Mapbox = ({ data }: Props) => {
 
   return (
     <Map
@@ -24,7 +24,7 @@ export const Mapbox = () => {
       attributionControl={false}
       minZoom={11}
     >
-      <Source type='geojson' data={ramp}>
+      <Source type='geojson' data={data}>
         <MapLayer type={'fill'} source={'mapSource'} />
         <MapLayer type={'circle'} source={'mapSource'} />
       </Source>
