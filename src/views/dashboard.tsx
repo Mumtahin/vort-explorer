@@ -3,7 +3,8 @@ import { Mapbox } from "../components/Mapbox";
 import { Bar } from "../components/charts/Bar";
 import { MapGeoJSONFeature } from "react-map-gl";
 import { useAppSelector } from "../hooks";
-import { getMaterialCount } from "../utils/ramp";
+import { getRampsPerMaterial, getRampsPerSize } from "../utils/ramp";
+import { Pie } from "../components/charts/Pie";
 
 export const Dashboard = () => {
 	const bgColour = '#191a1a';
@@ -13,23 +14,22 @@ export const Dashboard = () => {
 		state => state.rampData
 	)
 
-	const rampPerMaterial = getMaterialCount(rampGeoJson.features);
-
-	console.log('rampPerMaterial', rampPerMaterial)
+	const rampsPerMaterial = getRampsPerMaterial(rampGeoJson.features);
+	const rampsPerSize = getRampsPerSize(rampGeoJson.features);
 
 	return (
 		<div className="App" style={{ backgroundColor: bgColour, color: textColour }}>
 			<Box display="flex" flexDirection="row" height="100vh">
 				<Box flex={1}>
-					<Box height="40vh" display="flex" flexDirection="column">
-						<Box flex={1}>
-							<Box height="40vh" sx={{ m: 3 }}>
-								<Bar data={rampPerMaterial} />
-							</Box>
+					<Box display="flex" flexDirection="column">
+						<Box height="40vh" sx={{ m: 3 }}>
+							{/* <Bar data={rampsPerMaterial} /> */}
+							<Pie data={rampsPerMaterial} />
 						</Box>
 						<Box height="40vh" flex={1}>
 							<Box height="40vh" sx={{ m: 3 }}>
-								Chart
+								{/* <Bar data={rampsPerSize} /> */}
+								<Pie data={rampsPerSize} />
 							</Box>
 						</Box>
 					</Box>

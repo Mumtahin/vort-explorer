@@ -1,10 +1,8 @@
 import { ResponsiveBar } from "@nivo/bar";
+import { Data } from "../../types";
 
 interface Props {
-  data: {
-    id: string;
-    value: number;
-  }[]
+  data: Data;
 }
 
 export const Bar = ({ data }: Props) => {
@@ -14,16 +12,7 @@ export const Bar = ({ data }: Props) => {
     padding={0.1}
     colors={{ scheme: 'category10' }}
     borderWidth={1}
-    borderColor={{
-      from: 'color',
-      modifiers: [
-        [
-          'darker',
-          0.2
-        ]
-      ]
-    }}
-    // borderRadius={5}
+    borderRadius={5}
     enableGridY={false}
     labelTextColor={{
       from: 'color',
@@ -35,7 +24,7 @@ export const Bar = ({ data }: Props) => {
       ]
     }}
     theme={{
-
+      textColor: '#eee'
     }}
   />;
 }
