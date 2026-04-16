@@ -1,9 +1,15 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { vi } from 'vitest';
 import App from './App';
 
-test('renders learn react link', () => {
+vi.mock('./components/Mapbox', () => ({
+  Mapbox: () => <div>Map Mock</div>,
+  default: () => <div>Map Mock</div>
+}));
+
+test('renders dashboard content', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(screen.getAllByText('Chart')).toHaveLength(2);
+  expect(screen.getByText('Map Mock')).toBeInTheDocument();
 });

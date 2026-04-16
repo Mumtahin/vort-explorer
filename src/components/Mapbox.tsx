@@ -3,7 +3,7 @@ import { useAppSelector } from '../hooks'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { MapLayer } from './MapLayer'
 
-const mapboxToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN
+const mapboxToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN
 
 export const Mapbox = () => {
   const ramp = useAppSelector(
